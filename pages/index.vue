@@ -1,4 +1,5 @@
-<script setup>
+<script setup lang="js">
+
 const showMenu = ref(false);
 
 const cardsData = ref([
@@ -7,42 +8,48 @@ const cardsData = ref([
     title: "Laravel Framework",
     description:
       "Laravel is a popular open-source PHP web application framework with expressive syntax, providing robust features for web development.",
-    button: "See My Work",
+    button: "See Laravel Docs",
+    url: "https://laravel.com/",
   },
   {
     thumbnail: "Golang.svg",
     title: "Go Programming Language",
     description:
       "Go (Golang) is an efficient and statically-typed programming language developed by Google, designed for concurrent systems, simplicity, and high performance web services.",
-    button: "See My Work",
+    button: "Visit Go Website",
+    url: "https://go.dev/",
   },
   {
     thumbnail: "postgresql.svg",
     title: "PostgreSQL",
     description:
       "PostgreSQL is a powerful open-source relational database management system known for its extensibility, ACID compliance, and support for advanced features, ideal for complex data management and applications.",
-    button: "See My Work",
+    button: "Learn More About PostgreSQL",
+    url: "https://www.postgresql.org/",
   },
   {
     thumbnail: "mongo.svg",
     title: "MongoDB",
     description:
       "MongoDB is a NoSQL document-oriented database, offering high scalability, flexibility, and ease of use. It stores data in JSON-like documents and suits modern, dynamic applications and big data solutions.",
-    button: "See My Work",
+    button: "Learn MongoDB",
+    url: "https://www.mongodb.com/",
   },
   {
     thumbnail: "tailwindcss-ar21.svg",
     title: "Tailwind CSS",
     description:
       "Tailwind CSS is a utility-first CSS framework that provides a set of pre-defined classes to design UI components quickly, promoting rapid and customizable web development.",
-    button: "See My Work",
+    button: "Start Learn Tailwind CSS",
+    url: "https://tailwindcss.com/",
   },
   {
     thumbnail: "Nuxt.svg",
     title: "Nuxt.js",
     description:
       "Nuxt.js is a progressive Vue.js framework that simplifies the creation of server-rendered Vue applications, enabling easy development of SEO-friendly, performant, and scalable web projects.",
-    button: "See My Work",
+    button: "See More About Nuxt",
+    url: "https://nuxt.com/",
   },
 ]);
 </script>
@@ -72,7 +79,7 @@ const cardsData = ref([
         </div>
 
         <div
-          class=" flex-col sm:flex-row items-center justify-center sm:justify-end absolute sm:static top-16 right-0 bg-[#F9F5F2] w-full sm:w-fit gap-8 py-2"
+          class="flex-col sm:flex-row items-center justify-center sm:justify-end absolute sm:static top-16 right-0 bg-[#F9F5F2] w-full sm:w-fit gap-8 py-2"
           :class="[showMenu ? 'flex sm:hidden' : 'hidden']"
         >
           <a href="#" class="font-semibold text-lg hover:text-xl">About</a>
@@ -95,14 +102,22 @@ const cardsData = ref([
             and frameworks. My expertise in front-end and back-end development
             empowers my to create innovative and user-friendly web solutions.
           </div>
-          <button
-            class="bg-[#F7CB46] py-5 px-16 rounded-full w-full sm:w-fit ring-2 ring-black font-black text-2xl shadow-[5px_5px_0px_0px_rgb(39,39,37)] active:shadow-[2px_2px_0px_0px_rgb(39,39,37)] active:translate-y-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgb(39,39,37)] transition-all"
+          <a
+            href="/pdf/Ilham Efo Hernanda-resume.pdf"
+            target="_blank"
+            download="Ilham Efo Hernanda-resume.pdf"
+            class="bg-[#F7CB46] py-5 px-16 rounded-full w-full sm:w-fit ring-2 ring-black font-black text-2xl shadow-[5px_5px_0px_0px_rgb(39,39,37)] active:shadow-[2px_2px_0px_0px_rgb(39,39,37)] active:translate-y-1 hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgb(39,39,37)] transition-all flex items-center justify-center"
           >
             Download My CV!
-          </button>
+          </a>
         </div>
         <div class="flex w-full sm:w-1/2 items-end justify-end">
-          <nuxt-img format="webp" src="images/profile.webp" alt="" class="w-[500px]" />
+          <nuxt-img
+            format="webp"
+            src="images/profile.webp"
+            alt=""
+            class="w-[500px]"
+          />
         </div>
       </div>
 
@@ -120,9 +135,13 @@ const cardsData = ref([
         <div
           class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 w-full"
         >
-          <Card v-for="item in cardsData">
+          <Card v-for="item in cardsData" :url="item.url">
             <template #icon>
-              <nuxt-img format="webp" :src="`/images/${item.thumbnail}`" class="h-20" />
+              <nuxt-img
+                format="webp"
+                :src="`/images/${item.thumbnail}`"
+                class="h-20"
+              />
             </template>
 
             <template #title> {{ item.title }} </template>
