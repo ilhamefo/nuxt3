@@ -1,18 +1,5 @@
 version: '3.5'
 services:
-  webserver_porto:
-    image: nginx:alpine
-    container_name: webserver_porto
-    restart: unless-stopped
-    tty: true
-    ports:
-      - "80:80"
-    volumes:
-     - ./:/var/www
-     - ./nginx/conf.d/:/etc/nginx/conf.d/
-    networks:
-     - app-network
-    command: [nginx-debug, '-g', 'daemon off;']
   porto_web:
     build: 
       context: .
