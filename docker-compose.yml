@@ -11,7 +11,7 @@ services:
      - ./:/var/www
      - ./nginx/conf.d/:/etc/nginx/conf.d/
     networks:
-     - efo_networks
+     - app-network
     command: [nginx-debug, '-g', 'daemon off;']
   porto_web:
     build: 
